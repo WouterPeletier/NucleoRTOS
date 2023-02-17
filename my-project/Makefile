@@ -1,11 +1,14 @@
 PROJECT = awesomesauce
 BUILD_DIR = bin
+SHARED_DIR = ../rtos
 
-#TODO make use of wildcards to include all nessicary c files
-SHARED_DIR = ../my-common-code
-CFILES = my-project.c
-CFILES += api.c
-AFILES += api-asm.S
+#TODO make use of wildcards to include c files from main project
+CFILES = main.c
+
+# These files are from rtos
+CFILES += heap_1.c list.c opencm3.c port.c queue.c tasks.c
+
+#AFILES += asm_file.s
 
 DEVICE=stm32f446RET6
 
