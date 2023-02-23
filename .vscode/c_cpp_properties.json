@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/libopencm3/**",
+                "${workspaceFolder}/libopencm3/include/libopencmsis/**",
+                "${workspaceFolder}/libopencm3/include/libopencm3/**",
+                "${workspaceFolder}/libopencm3/include/libopencm3/stm32/f4",
+                "${workspaceFolder}/FreeRTOS/FreeRTOS/Source/include/**",
+                "${workspaceFolder}/rtos"
+            ],
+            "defines": ["STM32F4"],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

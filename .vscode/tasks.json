@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build all",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": ["-C", "my-project"]
+        },
+
+        {
+            "label": "clean",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean", "-C", "my-project"]
+        },
+
+        {
+            "label": "Flash",
+            "group": "build",
+            "type": "shell",
+            "command": "st-flash",
+            "args": ["--reset", "write", "my-project/awesomesauce.bin", "0x08000000"]
+        },
+
+        {
+            "label": "Build and Flash",
+            "group": {"kind": "build", "isDefault": true},
+            "dependsOrder": "sequence",
+            "dependsOn": ["Build all", "Flash"]
+        }
+    ]
+}

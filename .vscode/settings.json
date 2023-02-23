@@ -1,0 +1,12 @@
+{
+    "cortex-debug.gdbPath": "/usr/bin/arm-none-eabi-gdb",
+    "cortex-debug.stutilPath": "/usr/bin/st-util",
+    "files.associations": {
+        "*.h": "c",
+        "stm32l431xx.h": "c",
+        "main.h": "c",
+        "cstdio": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "git.ignoreLimitWarning": true
+}

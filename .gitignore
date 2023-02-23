@@ -2,5 +2,4 @@ bin/
 *.elf
 *.bin
 generated.*.ld
-.vscode/
 FreeRTOS/*
