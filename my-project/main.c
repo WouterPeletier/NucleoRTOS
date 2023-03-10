@@ -1,6 +1,6 @@
 /* Simple LED task demo, using timed delays:
  *
- * The LED on PC13 is toggled in task1.
+ * The LED on PA5 is blinking in t_toggle_A5.
  */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -20,8 +20,12 @@ void vApplicationStackOverflowHook(
 	for(;;);	// Loop forever here..
 }
 
-static void task1(void *args __attribute((unused))) 
+static void t_toggle_A5(void *args __attribute((unused))) 
 {
+
+	/*set GPIO A5 as output (led on nucleo)*/
+	rcc_periph_clock_enable(RCC_GPIOA);
+	gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO5);
 
 	for (;;) {
 		gpio_toggle(GPIOA,GPIO5);
@@ -34,12 +38,8 @@ int main(void) {
 	/* set the system clock to 84MHZ*/
 	rcc_clock_setup_pll(&rcc_hse_8mhz_3v3[RCC_CLOCK_3V3_84MHZ]);
 
-	/*set GPIO A5 as output (led on nucleo)*/
-	rcc_periph_clock_enable(RCC_GPIOA);
-	gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO5);
-
 	/* create a task*/
-	xTaskCreate(task1,"LED",100,NULL,configMAX_PRIORITIES-1,NULL);
+	xTaskCreate(t_toggle_A5,"LED",100,NULL,configMAX_PRIORITIES-1,NULL);
 
 	/* start the scheduler*/
 	vTaskStartScheduler();
@@ -47,5 +47,3 @@ int main(void) {
 	for (;;);
 	return 0;
 }
-
-// End
